@@ -1,13 +1,12 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-web';
 
 export default function CurrencyCard(props){
     return (
-        <TouchableOpacity style={[styles.container, styles.shadowProp] }>
+        <TouchableOpacity style={[styles.container, styles.shadow] }>
                 <View style = {styles.subcontainer}>
                     <Ionicons style = {styles.tinyLogo} name={props.objeto.image} size={64}></Ionicons>
-                    <View style = {{ flexDirection: 'column', padding: 10, flex: 1, marginLeft: '1em' }}>
+                    <View style = {{ flexDirection: 'column', padding: 10, flex: 1 }}>
                         <Text style = {styles.name}>{props.objeto.name}</Text>
                         <Text style = {styles.value}>{props.objeto.value}</Text>
                     </View>
@@ -25,14 +24,18 @@ const styles = StyleSheet.create({
       width: '100%',
       maxWidth: '70%',
       backgroundColor: 'white',
-      marginBottom: '1em'
+      top: 20,
     },
-    shadowProp: {
-        shadowColor: '#171717',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.3,
-        shadowRadius: 3,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+          width: 0,
+          height: 10
       },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.5,
+      elevation: 5
+  },
     name: {
         fontWeight: '500',
         fontSize: 30

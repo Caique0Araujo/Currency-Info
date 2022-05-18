@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 
+
 export default function SettingsScreen({navigation}) {
     return (
       <View style={styles.container}>
+        
         <View style={styles.imgContainer}>
 
         </View>
@@ -36,16 +38,14 @@ export default function SettingsScreen({navigation}) {
       width: 300,
       height: 300,
       borderRadius: 15,
-      marginBottom: '4em',
     },
     bttn: {
       backgroundColor: '#37280B',
       width: '40%',
-      padding: '0.5em',
+      padding: 0.5,
       borderRadius: 10,
       borderWidth: 0.5,
       borderColor: 'transparent',
-      marginTop: '1em',
       
   }
   });

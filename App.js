@@ -1,22 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import AboutScreen from './screens/AboutScreen';
-import CurrencyScreen from './screens/CurrencyScreen';
-import DefaultCurrency from './screens/DefaultCurrencyScreen';
-import HomeCurrencyScreen from './screens/HomeCurrencyScreen';
-import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/LoginScreen';
-import SettingsScreen from './screens/SettingsScreen';
-
+import Tabs from './navigation/tabs';
+import './navigation/stack';
 
 const MyTheme = {
   dark: false,
   colors: {
     primary: '#3C3C3C',
-    background: '#F8F8F8',
+    background: '#E9D2A0',
     card: '#E1BD5E',
     text: '#3C3C3C',
     border: 'transparent',
@@ -24,28 +15,14 @@ const MyTheme = {
   },
 };
 
-const Stack = createNativeStackNavigator();
 
-export default function App() {
+
+const App = () => {
   return (
     <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-        <Stack.Screen name="About" component={AboutScreen} options={{title: "Sobre"}}/>
-        <Stack.Screen name="Currency" component={CurrencyScreen} options={{title: "Converter Moeda"}}/>
-        <Stack.Screen name="DefaultCurrency" component={DefaultCurrency} options={{title: "Moeda padrão"}}/>
-        <Stack.Screen name="HomeCurrency" component={HomeCurrencyScreen} options={{title: "Moedas da página inicial"}}/>
-        <Stack.Screen name="Login" component={LoginScreen} options={{title: "Login"}}/>
-      </Stack.Navigator>
+      <Tabs />
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

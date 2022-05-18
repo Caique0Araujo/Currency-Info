@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, TextInput, Picker } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import {useState} from 'react';
 
 
@@ -60,7 +61,7 @@ const [currency, setCurrency]= useState('');
       fontFamily: 'Roboto',
       width: '100%',
       height: '100%',
-      padding: '1em',
+      padding: 1,
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
@@ -68,8 +69,6 @@ const [currency, setCurrency]= useState('');
     input: {
       width: 200,
       height: 30,
-      margin: 12,
-      marginTop: '2em',
       borderWidth: 1,
       padding: 10,
       borderRadius: 10,
@@ -92,7 +91,6 @@ const [currency, setCurrency]= useState('');
     },
     picker: {
       width: 200,
-      marginTop: '2em',
       height: 30,
       backgroundColor: '#FFF0E0',
       borderColor: 'black',
