@@ -128,7 +128,7 @@ export default function HomeScreen({navigation}) {
     currencyContainer: {
         bottom: -80,
         padding: 10,
-        backgroundColor: 'gray',
+        backgroundColor: '#E1BD5E',
         width: 360,
         borderRadius: 5,
         height: 100,

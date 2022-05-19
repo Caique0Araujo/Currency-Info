@@ -144,7 +144,7 @@ const Tabs = () =>{
                                 tintColor: focused ? '#748c94' : '#fff'
                             }}
                         />
-                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Sair</Text>
+                        <Text style={{color: focused ? '#E1BD5E' : '#fff', fontSize: 12}}>Sair</Text>
                     </View>
                     );
                 }
