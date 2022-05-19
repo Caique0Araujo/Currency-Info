@@ -23,7 +23,7 @@ const CustomTabBarButton = ({children, onPress}) => {
             width: 80,
             height: 80,
             borderRadius: 45,
-            backgroundColor: '#E1BD5E',
+            backgroundColor: '#fff',
             ...styles.shadow
 
             
@@ -48,7 +48,7 @@ const Tabs = () =>{
                     left: 20,
                     right: 20,
                     elevation: 0,
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "#E9D2A0",
                     borderRadius: 15,
                     height: 80,
                     ...styles.shadow
@@ -66,10 +66,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#E1BD5E' : '#748c94'
+                                tintColor: focused ? '#748c94' : '#fff'
                             }}
                         />
-                        <Text style={{color: focused ? '#E1BD5E' : '#748c94', fontSize: 12}}>Início</Text>
+                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Início</Text>
                     </View>
                     );
                 }
@@ -85,10 +85,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#E1BD5E' : '#748c94'
+                                tintColor: focused ? '#748c94' : '#fff'
                             }}
                         />
-                        <Text style={{color: focused ? '#E1BD5E' : '#748c94', fontSize: 12}}>Opções</Text>
+                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Opções</Text>
                     </View>
                     );
                 }
@@ -103,7 +103,7 @@ const Tabs = () =>{
                         style={{
                             width: 30,
                             height: 30,
-                            tintColor: '#fff'
+                            tintColor: '#E1BD5E'
                         }}
                     />
                     );
@@ -122,10 +122,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#E1BD5E' : '#748c94'
+                                tintColor: focused ? '#748c94' : '#fff'
                             }}
                         />
-                        <Text style={{color: focused ? '#E1BD5E' : '#748c94', fontSize: 12}}>Sobre</Text>
+                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Sobre</Text>
                     </View>
                     );
                 }
@@ -141,10 +141,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#E1BD5E' : '#748c94'
+                                tintColor: focused ? '#748c94' : '#fff'
                             }}
                         />
-                        <Text style={{color: focused ? '#E1BD5E' : '#748c94', fontSize: 12}}>Sair</Text>
+                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Sair</Text>
                     </View>
                     );
                 }

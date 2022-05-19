@@ -7,7 +7,7 @@ const MyTheme = {
   dark: false,
   colors: {
     primary: '#3C3C3C',
-    background: '#E9D2A0',
+    background: 'rgb(238, 238, 238)',
     card: '#E1BD5E',
     text: '#3C3C3C',
     border: 'transparent',

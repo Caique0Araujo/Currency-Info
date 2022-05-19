@@ -33,20 +33,21 @@ export default function HomeScreen({navigation}) {
     return (
         <SafeAreaView style={[styles.container, styles.shadow]}>
             <StatusBar/>
-            <View style={[styles.headerContainer, styles.shadow]}>
-                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.headerContainer}>
+                <View style={{flexDirection: 'row', alignItems: 'center', width: '100%'}}>
                     <TouchableOpacity style={styles.imgContainer}>
-                        <Image source={require('../assets/accountDefault.png')} style={{tintColor: '#748c94'}}></Image>
+                        <Image source={require('../assets/accountDefault.png')} style={{tintColor: '#fff'}}></Image>
                     </TouchableOpacity>
-                    <Text style={{fontSize: 13, color: '#748c94', left: 13, bottom: 7}}>UserName</Text>
+                    <Text style={{fontSize: 13, color: '#fff', left: 13, bottom: 7}}>UserName</Text>
                 </View>
                 <Text style={styles.defaultText}>Welcome to CurrencyINFO@</Text>
-            </View> 
-            <View style={styles.bodyContainer}>
-                <View style={styles.currencyContainer}>
+                <View style={[styles.currencyContainer, styles.shadow]}>
                     <Image source={require('../assets/accountDefault.png')} style={{tintColor: 'white'}} ></Image>
                     <Text style={styles.currencyText}>Valor da moeda Real:</Text>
                 </View>
+            </View> 
+            <View style={styles.bodyContainer}>
+                
                 <View style={styles.cardsContainer}>
                     <CurrencyCard objeto={cardDollar}/>
                     <CurrencyCard objeto={cardEuro}/>
@@ -74,16 +75,18 @@ export default function HomeScreen({navigation}) {
             height: 10
         },
         shadowOpacity: 0.25,
-        shadowRadius: 3.5,
-        elevation: 5
+        shadowRadius: 2.5,
+        elevation: 10
     },
     headerContainer: {
-        backgroundColor: 'white',
+        backgroundColor: '#E9D2A0',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
         padding: 20,
         top: 0,
         left: 0,      
         right: 0,
-        height: 160,
+        height: 250,
         width: '100%',
         borderBottomRightRadius: 25,
         borderBottomLeftRadius: 25,
@@ -95,9 +98,10 @@ export default function HomeScreen({navigation}) {
         alignItems: 'center'
     },
     defaultText: {
+        color: 'white',
         textAlign: 'center',
-        top: 5,
-        fontWeight: '300',
+        top: 30,
+        fontWeight: '400',
         fontSize: 20,
     },
     currencyText: {
@@ -115,24 +119,23 @@ export default function HomeScreen({navigation}) {
         
     },
     cardsContainer: {
+        marginTop: '10%',
         width: '100%',
         flex: 1,
         alignItems: 'center'
 
     },
     currencyContainer: {
+        bottom: -80,
         padding: 10,
-        backgroundColor: 'rgba(252, 194, 36, 0.6)',
-        width: 330,
-        borderRadius: 28,
-        height: 80,
+        backgroundColor: '#E1BD5E',
+        width: 360,
+        borderRadius: 5,
+        height: 100,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
-        borderTopWidth: 0,
-        borderLeftWidth: 0,
-        borderColor: '#748c94'
+   
 
     }
 

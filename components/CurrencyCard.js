@@ -5,7 +5,7 @@ export default function CurrencyCard(props){
     return (
         <TouchableOpacity style={[styles.container, styles.shadow] }>
                 <View style = {styles.subcontainer}>
-                    <Ionicons style = {styles.tinyLogo} name={props.objeto.image} size={64}></Ionicons>
+                    <Ionicons style = {styles.tinyLogo} name={props.objeto.image} size={36}></Ionicons>
                     <View style = {{ flexDirection: 'column', padding: 10, flex: 1 }}>
                         <Text style = {styles.name}>{props.objeto.name}</Text>
                         <Text style = {styles.value}>{props.objeto.value}</Text>
@@ -17,7 +17,7 @@ export default function CurrencyCard(props){
 
 const styles = StyleSheet.create({
     container: {
-      padding: 10,
+      padding: 5,
       borderRadius: 10,
       borderWidth: 0.5,
       borderColor: 'transparent',
@@ -39,10 +39,10 @@ const styles = StyleSheet.create({
   },
     name: {
         fontWeight: '500',
-        fontSize: 30
+        fontSize: 20
     },
     value: {
-      fontSize: 20
+      fontSize: 10
     },
 
     subcontainer: {
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
 
     },
     tinyLogo: {
-      width: 64,
-      height: 64,
-      borderRadius: 50,
+      width: 36,
+      height: 36,
+      borderRadius: 25,
     },
     
     
