@@ -48,7 +48,7 @@ const Tabs = () =>{
                     left: 20,
                     right: 20,
                     elevation: 0,
-                    backgroundColor: "#E9D2A0",
+                    backgroundColor: "#e6c98c",
                     borderRadius: 15,
                     height: 80,
                     ...styles.shadow
@@ -66,10 +66,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#748c94' : '#fff'
+                                tintColor: focused ? '#fff' : '#000'
                             }}
                         />
-                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Início</Text>
+                        <Text style={{color: focused ? '#fff' : '#000', fontSize: 12}}>Início</Text>
                     </View>
                     );
                 }
@@ -85,10 +85,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#748c94' : '#fff'
+                                tintColor: focused ? '#fff' : '#000'
                             }}
                         />
-                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Opções</Text>
+                        <Text style={{color: focused ? '#fff' : '#000', fontSize: 12}}>Opções</Text>
                     </View>
                     );
                 }
@@ -122,10 +122,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#748c94' : '#fff'
+                                tintColor: focused ? '#fff' : '#000'
                             }}
                         />
-                        <Text style={{color: focused ? '#748c94' : '#fff', fontSize: 12}}>Sobre</Text>
+                        <Text style={{color: focused ? '#fff' : '#000', fontSize: 12}}>Sobre</Text>
                     </View>
                     );
                 }
@@ -141,10 +141,10 @@ const Tabs = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#748c94' : '#fff'
+                                tintColor: focused ? '#fff' : '#000'
                             }}
                         />
-                        <Text style={{color: focused ? '#E1BD5E' : '#fff', fontSize: 12}}>Sair</Text>
+                        <Text style={{color: focused ? '#fff' : '#000', fontSize: 12}}>Sair</Text>
                     </View>
                     );
                 }

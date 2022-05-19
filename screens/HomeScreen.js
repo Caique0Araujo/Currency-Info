@@ -79,7 +79,7 @@ export default function HomeScreen({navigation}) {
         elevation: 10
     },
     headerContainer: {
-        backgroundColor: '#E9D2A0',
+        backgroundColor: '#e6c98c',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         padding: 20,
@@ -128,7 +128,7 @@ export default function HomeScreen({navigation}) {
     currencyContainer: {
         bottom: -80,
         padding: 10,
-        backgroundColor: '#E1BD5E',
+        backgroundColor: '#f5d071',
         width: 360,
         borderRadius: 5,
         height: 100,
