@@ -15,14 +15,14 @@ export default function AboutScreen() {
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: 'white',
-      position: 'absolute',
-      bottom: 120,
-      left: 20,      
-      right: 20,
-      height: '80%',
-      elevation: 0,
-
-      borderRadius: 15,
+        position: 'absolute',
+        bottom: 100,
+        left: 20,      
+        right: 20,
+        height: 700,
+        elevation: 0,
+  
+        borderRadius: 15,
     },
     shadow: {
       shadowColor: '#7F5DF8',

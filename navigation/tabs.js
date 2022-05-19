@@ -13,21 +13,22 @@ const CustomTabBarButton = ({children, onPress}) => {
     return(
         <TouchableOpacity
         style={{
-            top: -30,
+            top: -40,
             justifyContent: 'center',
             alignItems: 'center',
         }}
         onPress={onPress}
     >
         <View style={{
-            width: 70,
-            height: 70,
-            borderRadius: 35,
+            width: 80,
+            height: 80,
+            borderRadius: 45,
             backgroundColor: '#E1BD5E',
             ...styles.shadow
 
             
         }}>
+        
             {children}  
         </View>
     </TouchableOpacity>
@@ -43,7 +44,7 @@ const Tabs = () =>{
                 headerShown: false,
                 tabBarStyle: {
                     position: 'absolute',
-                    bottom: 25,
+                    bottom: 10,
                     left: 20,
                     right: 20,
                     elevation: 0,
@@ -95,6 +96,7 @@ const Tabs = () =>{
             <Tab.Screen name = 'Currency' component={CurrencyScreen} options={{
                 tabBarIcon: ({focused}) => {
                     return(
+                        
                         <Image 
                         source={require('../assets/currencyChange.png')}
                         resizeMode='contain'

@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
       borderWidth: 0.5,
       borderColor: 'transparent',
       width: '100%',
-      maxWidth: '70%',
+      maxWidth: '90%',
       backgroundColor: 'white',
-      top: 20,
+      top: 30,
+      marginBottom: 20,
     },
     shadow: {
       shadowColor: '#000',
