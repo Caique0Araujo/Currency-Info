@@ -1,6 +1,4 @@
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import SettingsScreen from './SettingsScreen';
-import AboutScreen from './AboutScreen';
 import CurrencyCard from '../components/CurrencyCard';
 import { SafeAreaView, StatusBar, Image } from 'react-native';
 
@@ -9,21 +7,20 @@ import { SafeAreaView, StatusBar, Image } from 'react-native';
 const cardDollar = {
     name:'Dollar', 
     value: 'R$ 400',
-    image: 'logo-usd'
-}
-
-const cardEuro = {
+    image: require('../assets/dollar.png')
+  }
+  
+  const cardEuro = {
     name:'Euro', 
     value: 'R$ 500',
-    image: 'logo-euro'
-}
-
-const cardYen = {
+    image: require('../assets/euro.png')
+  }
+  
+  const cardYen = {
     name:'Yen', 
     value: 'R$ 200',
-    image: 'logo-yen'
-}
-
+    image: require('../assets/yen.png')
+  }
 
 
 

@@ -1,11 +1,15 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import restart from 'react-native-restart';
+
 import AboutScreen from '../screens/AboutScreen';
 import CurrencyScreen from '../screens/CurrencyScreen';
 import HomeScreen from '../screens/HomeScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import LoginScreen from '../screens/LoginScreen';
+
 import Stacks from './stack';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -75,7 +79,7 @@ const Tabs = () =>{
                 }
             }}/>
             
-            <Tab.Screen name ='Settings' component={SettingsScreen} options={{
+            <Tab.Screen name ='Settings' component={Stacks} options={{
                 tabBarIcon: ({focused}) => {
                     return(
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -149,11 +153,6 @@ const Tabs = () =>{
                     );
                 }
             }}/>
-        <Tab.Screen name="SettingsOption" component={Stacks} options={{
-        tabBarButton: () => null,
-        tabBarVisible:false //hide tab bar on this screen
-
-    }} />
 
         </Tab.Navigator>
     );

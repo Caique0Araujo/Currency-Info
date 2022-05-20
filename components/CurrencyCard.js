@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
 export default function CurrencyCard(props){
+
     return (
         <TouchableOpacity style={[styles.container, styles.shadow] }>
                 <View style = {styles.subcontainer}>
-                    <Ionicons style = {styles.tinyLogo} name={props.objeto.image} size={36}></Ionicons>
+                    <Image source= {props.objeto.image} style = {styles.tinyLogo} resizeMode='contain'/>
                     <View style = {{ flexDirection: 'column', padding: 10, flex: 1, marginLeft: '5%' }}>
                         <Text style = {styles.name}>{props.objeto.name}</Text>
                         <Text style = {styles.value}>{props.objeto.value}</Text>
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
 
     },
     tinyLogo: {
-      width: 36,
-      height: 36,
+      width: 30,
+      height: 30,
       borderRadius: 25,
     },
     

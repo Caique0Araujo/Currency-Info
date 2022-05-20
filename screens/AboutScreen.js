@@ -1,31 +1,34 @@
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
+import { ImageBackground } from 'react-native';
 
 
 export default function AboutScreen() {
     return (
-      <View style={[styles.container, styles.shadow]}>
-          <Text>Sobre</Text>
-      </View>
+      <ImageBackground source={require('../assets/background.jpg')} style={{width: "100%", height: "100%"}}>
+        <View style={[styles.container]}>
+          <Image source={require('../assets/CurrencyInfo.png')} style={{width: 200, height: 200, borderRadius: 20}}/>
+            <View style={styles.textContainer}>
+              <Text style={styles.text}>
+                CurrencyInfo é um aplicativo desenvolvido por Caique Araújo para a disciplina de 
+                Tópicos Especiais em desenvolvimento para dispositivos móveis.
+              </Text>
+            </View>
+        </View>
+      </ImageBackground>
     );
   }
   
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'white',
-        position: 'absolute',
-        bottom: 100,
-        left: 20,      
-        right: 20,
-        height: 700,
-        elevation: 0,
-  
-        borderRadius: 15,
+      width: "100%", 
+      height: "100%", 
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     shadow: {
-      shadowColor: '#7F5DF8',
+      shadowColor: '#37280B',
       shadowOffset: {
           width: 0,
           height: 10
@@ -33,5 +36,16 @@ export default function AboutScreen() {
       shadowOpacity: 0.25,
       shadowRadius: 3.5,
       elevation: 5
-  }
+  },
+    textContainer: {
+      width: '80%',
+      height: 400,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    text: {
+      color: '#fff',
+      fontWeight: '800',
+      fontSize: 26
+    }
   });

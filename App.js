@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './navigation/tabs';
-import './navigation/stack';
+import Main from './navigation/Main';
+
+
 
 const MyTheme = {
   dark: false,
   colors: {
     primary: '#3C3C3C',
-    background: 'rgb(238, 238, 238)',
+    background: '#EDEDED',
     card: '#E1BD5E',
     text: '#3C3C3C',
     border: 'transparent',
@@ -18,11 +20,20 @@ const MyTheme = {
 
 
 const App = () => {
-  return (
+
+  if(false){
+  return ( 
     <NavigationContainer theme={MyTheme}>
       <Tabs />
     </NavigationContainer>
   );
+  }else{
+    return(
+      <NavigationContainer>
+        <Main />
+      </NavigationContainer>
+    );
+  }
 }
 
 export default App;
