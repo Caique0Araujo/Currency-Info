@@ -1,4 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import restart from 'react-native-restart';
@@ -6,9 +7,21 @@ import restart from 'react-native-restart';
 import AboutScreen from '../screens/AboutScreen';
 import CurrencyScreen from '../screens/CurrencyScreen';
 import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
+import Logout from '../components/logout';
 
 import Stacks from './stack';
+
+const MyTheme = {
+    dark: false,
+    colors: {
+      primary: "#3C3C3C",
+      background: "#EDEDED",
+      card: "#E1BD5E",
+      text: "#3C3C3C",
+      border: "transparent",
+      notification: "#d4d4d4",
+    },
+  };
 
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +55,7 @@ const CustomTabBarButton = ({children, onPress}) => {
 
 const Tabs = () =>{
     return(
+        <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
@@ -135,7 +149,7 @@ const Tabs = () =>{
                 }
             }}
             />
-            <Tab.Screen name ='LoginScreen' component={LoginScreen} options={{
+            <Tab.Screen name ='LoginScreen' component={Logout} options={{
                 tabBarIcon: ({focused}) => {
                     return(
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -155,6 +169,7 @@ const Tabs = () =>{
             }}/>
 
         </Tab.Navigator>
+        </NavigationContainer>
     );
 }
 

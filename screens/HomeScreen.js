@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import CurrencyCard from '../components/CurrencyCard';
 import { SafeAreaView, StatusBar, Image } from 'react-native';
+import Context from '../context/context';
+import { useContext } from 'react';
+
 
 
 
@@ -27,6 +30,8 @@ const cardDollar = {
 
 export default function HomeScreen({navigation}) {
 
+    const [ authenticated ] = useContext(Context);
+
     return (
         <SafeAreaView style={[styles.container, styles.shadow]}>
             <StatusBar/>
@@ -35,7 +40,7 @@ export default function HomeScreen({navigation}) {
                     <TouchableOpacity style={styles.imgContainer}>
                         <Image source={require('../assets/accountDefault.png')} style={{tintColor: '#fff'}}></Image>
                     </TouchableOpacity>
-                    <Text style={{fontSize: 13, color: '#fff', left: 13, bottom: 7}}>UserName</Text>
+                    <Text style={{fontSize: 13, color: '#fff', left: 13, bottom: 7}}>{authenticated?.name}</Text>
                 </View>
                 <Text style={styles.defaultText}>Welcome to CurrencyINFO@</Text>
                 <View style={[styles.currencyContainer, styles.shadow]}>
