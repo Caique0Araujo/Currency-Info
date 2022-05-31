@@ -1,38 +1,49 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useContext, useState } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import CurrencyCard from "../components/CurrencyCard";
+import store from "../components/store";
+import Context from "../context/context";
 
 const cardDollar = {
   name: "Dollar",
-  value: "R$ 400",
+  value: 50,
   image: require("../assets/dollar.png"),
 };
 
 const cardEuro = {
   name: "Euro",
-  value: "R$ 500",
+  value: 100,
   image: require("../assets/euro.png"),
 };
 
 const cardYen = {
   name: "Yen",
-  value: "R$ 200",
+  value: 200,
   image: require("../assets/yen.png"),
 };
 
 const cardReal = {
   name: "Real",
-  value: "R$ 200",
+  value: 300,
   image: require("../assets/brl.png"),
 };
 
 const cardPound = {
   name: "Pound",
-  value: "R$ 200",
+  value: 200,
   image: require("../assets/pound.png"),
 };
 
+
+async function storeData(key, name){
+  await store(key, name);
+}
+
 export default function DefaultCurrencyScreen() {
+
+  const [defaultCurrency, setDefaultCurrency] = useState('');
+
   return (
     <View style={styles.container}>
       <View style={styles.bodyContainer}>
@@ -49,11 +60,35 @@ export default function DefaultCurrencyScreen() {
         </Text>
 
         <View style={styles.cardsContainer}>
-          <CurrencyCard objeto={cardReal} />
-          <CurrencyCard objeto={cardEuro} />
-          <CurrencyCard objeto={cardYen} />
-          <CurrencyCard objeto={cardPound} />
-          <CurrencyCard objeto={cardDollar} />
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
+            storeData('defaultCurrency', 'Real');
+            
+          }}>
+            <CurrencyCard objeto={cardReal} />
+          </TouchableOpacity>
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
+            storeData('defaultCurrency', 'Euro');
+
+          }}>
+            <CurrencyCard objeto={cardEuro} />
+          </TouchableOpacity>
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
+            storeData('defaultCurrency', 'Yen');
+            
+          }}>
+            <CurrencyCard objeto={cardYen} />
+          </TouchableOpacity>
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
+            storeData('defaultCurrency', 'Pound');
+          }}>
+            <CurrencyCard objeto={cardPound} />
+          </TouchableOpacity>
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
+            storeData('defaultCurrency', 'Dollar');
+          }}>
+           <CurrencyCard objeto={cardDollar} />
+          </TouchableOpacity>
+
         </View>
       </View>
     </View>

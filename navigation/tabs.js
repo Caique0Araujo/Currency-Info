@@ -2,7 +2,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import restart from 'react-native-restart';
 
 import AboutScreen from '../screens/AboutScreen';
 import CurrencyScreen from '../screens/CurrencyScreen';
@@ -11,17 +10,7 @@ import Logout from '../components/logout';
 
 import Stacks from './stack';
 
-const MyTheme = {
-    dark: false,
-    colors: {
-      primary: "#3C3C3C",
-      background: "#EDEDED",
-      card: "#E1BD5E",
-      text: "#3C3C3C",
-      border: "transparent",
-      notification: "#d4d4d4",
-    },
-  };
+
 
 
 const Tab = createBottomTabNavigator();
@@ -55,7 +44,6 @@ const CustomTabBarButton = ({children, onPress}) => {
 
 const Tabs = () =>{
     return(
-        <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
@@ -90,7 +78,7 @@ const Tabs = () =>{
                         <Text style={{color: focused ? '#fff' : '#000', fontSize: 12}}>Início</Text>
                     </View>
                     );
-                }
+                }, unmountOnBlur: true
             }}/>
             
             <Tab.Screen name ='Settings' component={Stacks} options={{
@@ -128,7 +116,7 @@ const Tabs = () =>{
                 },
                 tabBarButton: (props)=>{
                     return (<CustomTabBarButton{...props}/>);
-                }
+                }, unmountOnBlur: true
             }}/>
             <Tab.Screen name ='About' component={AboutScreen} options={{
                 tabBarIcon: ({focused}) => {
@@ -149,7 +137,7 @@ const Tabs = () =>{
                 }
             }}
             />
-            <Tab.Screen name ='LoginScreen' component={Logout} options={{
+            <Tab.Screen name ='Logout' component={Logout} options={{
                 tabBarIcon: ({focused}) => {
                     return(
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -169,7 +157,6 @@ const Tabs = () =>{
             }}/>
 
         </Tab.Navigator>
-        </NavigationContainer>
     );
 }
 

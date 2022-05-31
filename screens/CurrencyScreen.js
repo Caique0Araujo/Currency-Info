@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import retrive from "../components/retrieve";
 
 function convert(value, currency) {
   if (currency === "Dollar") {
@@ -12,11 +13,37 @@ function convert(value, currency) {
     const euroValue = 5.25;
     return value * euroValue;
   }
+
+  if(currency === "Real"){
+    const realValue = 1;
+    return value * realValue;
+  }
+
+  if(currency === "Pound"){
+    const poundValue = 6.25;
+    return value * poundValue;
+  }
+
+  if(currency === "Yen"){
+    const yenValue = 7.25;
+    return value * yenValue;
+  }
+  
 }
 
 export default function CurrencyScreen() {
   const [value, setValue] = useState(0);
   const [currency, setCurrency] = useState("Dollar");
+  const [defaultCurrency, setDefaultCurrency] = useState("");
+
+  useEffect(() => {
+    async function retrieveData() {
+      const data = await retrive("defaultCurrency");
+      setDefaultCurrency(data);
+
+    }
+    retrieveData();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -30,7 +57,7 @@ export default function CurrencyScreen() {
       </View>
       <View style={styles.bodyContainer}>
         <View style={styles.textContainer}>
-          <Text style={styles.name}>Valor do Real em {currency}:</Text>
+          <Text style={styles.name}>Valor do {defaultCurrency} em {currency}:</Text>
           <Text style={styles.value}>R$: {value}</Text>
         </View>
         <TextInput
@@ -48,8 +75,11 @@ export default function CurrencyScreen() {
             setValue(0);
           }}
         >
-          <Picker.Item label="Dollar" value="Dollar" />
+          <Picker.Item label="Real" value="Real" />
           <Picker.Item label="Euro" value="Euro" />
+          <Picker.Item label="Yen" value="Yen" />
+          <Picker.Item label="Dollar" value="Dollar" />
+          <Picker.Item label="Pound" value="Pound" />
         </Picker>
         <View
           style={{

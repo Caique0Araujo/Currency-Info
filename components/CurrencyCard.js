@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 export default function CurrencyCard(props){
 
     return (
-        <TouchableOpacity style={[styles.container, styles.shadow] }>
+        <View style={[styles.container, styles.shadow] }>
                 <View style = {styles.subcontainer}>
                     <Image source= {props.objeto.image} style = {styles.tinyLogo} resizeMode='contain'/>
                     <View style = {{ flexDirection: 'column', padding: 10, flex: 1, marginLeft: '5%' }}>
@@ -11,7 +11,7 @@ export default function CurrencyCard(props){
                         <Text style = {styles.value}>{props.objeto.value}</Text>
                     </View>
                 </View>
-        </TouchableOpacity>
+        </View>
       );
 }
 

@@ -10,10 +10,11 @@ import Context from "../context/context";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import React, { useEffect, useContext } from "react";
+import Store from '../components/store';
 
 WebBrowser.maybeCompleteAuthSession();
 
-export default function LoginScreen( ) {
+export default function  LoginScreen( ) {
 
   const [authenticated, setAuthenticated] = useContext(Context);
   const [request, response, promptAsync] = Google.useAuthRequest({
@@ -30,24 +31,28 @@ export default function LoginScreen( ) {
     
     if (response?.type === "success") {
       const { authentication } = response;
-      fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          Authorization: "Bearer " + authentication.accessToken,
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-
-          return response.json();
+      async function fetchLogin(){
+        await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + authentication.accessToken,
+            "Content-Type": "application/json",
+          },
         })
-        .then((json) => {
-          setAuthenticated({
-            email: json.email,
-            name: json.name,
+          .then((response) => {
+  
+            return response.json();
+          })
+          .then(async (json) => {
+            await Store('email', json.email);
+            await Store('name', json.name);
+            setAuthenticated({email: json.email, name: json.name});
+            
           });
-        });
+
+      }
+      fetchLogin();
     }
   }, [response]);
 

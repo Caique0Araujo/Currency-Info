@@ -1,14 +1,18 @@
-import { useContext } from 'react';
-import { Text } from 'react-native';
-import Context from '../context/context';
+import { useContext, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Decider from './decider';
 
 const Logout = ({navigation}) => {
-    const [authenticated, setAuthenticated] = useContext(Context);
-    setAuthenticated({
-        email: null,
-        nome: null
-    });
-    return <Text />;
+
+
+    useEffect(() => {
+      async function clearData(){
+        await AsyncStorage.clear();
+      }
+      clearData();
+    }, [])
+    
+    return <Decider/>;
 
 
 }
