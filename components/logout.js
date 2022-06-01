@@ -1,18 +1,16 @@
-import { useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Decider from './decider';
+
 
 const Logout = ({navigation}) => {
 
 
     useEffect(() => {
       async function clearData(){
-        await AsyncStorage.clear();
+        await AsyncStorage.removeItem('name');
+        await AsyncStorage.removeItem('email');
       }
       clearData();
-    }, [])
-    
-    return <Decider/>;
+    }, []);
 
 
 }

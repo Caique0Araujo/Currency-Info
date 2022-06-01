@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from "react-native";
 import CurrencyCard from "../components/CurrencyCard";
 import { SafeAreaView, StatusBar, Image } from "react-native";
 import Context from "../context/context";
@@ -7,10 +7,10 @@ import retrive from "../components/retrieve";
 
 export default function HomeScreen({ navigation }) {
   const [authenticated] = useContext(Context);
-  const [defaultCurrency, setDefaultCurrency] = useState("");
-  const [currency1, setCurrency1] = useState("");
-  const [currency2, setCurrency2] = useState("");
-  const [currency3, setCurrency3] = useState("");
+  const [defaultCurrency, setDefaultCurrency] = useState("Real");
+  const [currency1, setCurrency1] = useState("Dollar");
+  const [currency2, setCurrency2] = useState("Euro");
+  const [currency3, setCurrency3] = useState("Pound");
 
   useEffect(() => {
     async function retrieveData() {
@@ -18,10 +18,10 @@ export default function HomeScreen({ navigation }) {
       const c1 = await retrive("currency1");
       const c2 = await retrive("currency2");
       const c3 = await retrive("currency3");
-      setDefaultCurrency(data);
-      setCurrency1(c1);
-      setCurrency2(c2);
-      setCurrency3(c3);
+      if(data)setDefaultCurrency(data);
+      if(c1)setCurrency1(c1);
+      if(c2)setCurrency2(c2);
+      if(c3)setCurrency3(c3);
     }
     retrieveData();
   }, []);
@@ -56,6 +56,7 @@ export default function HomeScreen({ navigation }) {
       </View>
       <View style={styles.bodyContainer}>
         <View style={styles.cardsContainer}>
+          <ScrollView style={styles.scrollView} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
           <CurrencyCard
             objeto={{
               name: currency1,
@@ -77,6 +78,7 @@ export default function HomeScreen({ navigation }) {
               image: require("../assets/dollar.png"),
             }}
           />
+          </ScrollView>
         </View>
       </View>
     </SafeAreaView>
@@ -115,9 +117,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 25,
   },
   bodyContainer: {
-    marginTop: "10%",
     width: "100%",
-    flex: 1,
     alignItems: "center",
   },
   defaultText: {
@@ -140,9 +140,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   cardsContainer: {
-    marginTop: "10%",
     width: "100%",
-    flex: 1,
     alignItems: "center",
   },
   currencyContainer: {
@@ -155,6 +153,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+  },
+  scrollView: {
+    width: '100%',
+    height: 350,
   },
 });
 

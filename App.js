@@ -37,9 +37,7 @@ const App = () => {
     return (
       <Context.Provider value={[authenticated, setAuthenticated]}>
         <NavigationContainer theme={MyTheme}>
-          <Stack.Navigator>
             <Decider/>
-          </Stack.Navigator>
         </NavigationContainer>
       </Context.Provider>
     );

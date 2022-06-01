@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Modal, Pressable } from "react-native";
 
 import CurrencyCard from "../components/CurrencyCard";
 import store from "../components/store";
@@ -43,6 +43,8 @@ async function storeData(key, name){
 export default function DefaultCurrencyScreen() {
 
   const [defaultCurrency, setDefaultCurrency] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+
 
   return (
     <View style={styles.container}>
@@ -62,35 +64,59 @@ export default function DefaultCurrencyScreen() {
         <View style={styles.cardsContainer}>
           <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
             storeData('defaultCurrency', 'Real');
+            setModalVisible(true);
             
           }}>
             <CurrencyCard objeto={cardReal} />
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
             storeData('defaultCurrency', 'Euro');
+            setModalVisible(true);
 
           }}>
             <CurrencyCard objeto={cardEuro} />
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
             storeData('defaultCurrency', 'Yen');
-            
+            setModalVisible(true);
           }}>
             <CurrencyCard objeto={cardYen} />
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
             storeData('defaultCurrency', 'Pound');
+            setModalVisible(true);
           }}>
             <CurrencyCard objeto={cardPound} />
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
             storeData('defaultCurrency', 'Dollar');
+            setModalVisible(true);
           }}>
            <CurrencyCard objeto={cardDollar} />
           </TouchableOpacity>
 
         </View>
       </View>
+      <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Moeda padrão trocada com sucesso!</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Ok</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
     </View>
   );
 }
@@ -114,5 +140,27 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     alignItems: "center",
+  },modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
   },
 });

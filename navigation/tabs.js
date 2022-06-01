@@ -9,11 +9,11 @@ import HomeScreen from '../screens/HomeScreen';
 import Logout from '../components/logout';
 
 import Stacks from './stack';
-
-
+import LoginScreen from '../screens/LoginScreen';
 
 
 const Tab = createBottomTabNavigator();
+
 
 const CustomTabBarButton = ({children, onPress}) => {
     return(
@@ -26,8 +26,8 @@ const CustomTabBarButton = ({children, onPress}) => {
         onPress={onPress}
     >
         <View style={{
-            width: 80,
-            height: 80,
+            width: 70,
+            height: 70,
             borderRadius: 45,
             backgroundColor: '#fff',
             ...styles.shadow
@@ -56,7 +56,7 @@ const Tabs = () =>{
                     elevation: 0,
                     backgroundColor: "#e6c98c",
                     borderRadius: 15,
-                    height: 80,
+                    height: '8%',
                     ...styles.shadow
 
                 }
