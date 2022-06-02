@@ -97,11 +97,6 @@ export default function  LoginScreen( ) {
             justifyContent: "space-around",
           }}
         >
-          <TouchableOpacity style={styles.bttnLoginFacebook}>
-            <Text style={{ color: "#EDEDED", fontSize: 18, fontWeight: "500" }}>
-              Facebook
-            </Text>
-          </TouchableOpacity>
           <TouchableOpacity
             style={styles.bttnLoginGoogle}
             onPress={() => promptAsync()}

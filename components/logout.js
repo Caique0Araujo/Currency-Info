@@ -1,4 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect } from 'react';
+import { Text } from 'react-native';
 
 
 const Logout = ({navigation}) => {
@@ -11,7 +13,6 @@ const Logout = ({navigation}) => {
       }
       clearData();
     }, []);
-
 
 }
 
