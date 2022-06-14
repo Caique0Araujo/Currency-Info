@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
@@ -9,7 +9,6 @@ import HomeScreen from '../screens/HomeScreen';
 import Logout from '../components/logout';
 
 import Stacks from './stack';
-import LoginScreen from '../screens/LoginScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -32,6 +31,35 @@ const CustomTabBarButton = ({children, onPress}) => {
             backgroundColor: '#fff',
             ...styles.shadow
 
+            
+        }}>
+        
+            {children}  
+        </View>
+    </TouchableOpacity>
+    );
+    
+}
+
+
+const LogoutButton = ({children}) => {
+    return(
+        <TouchableOpacity
+        style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}
+        onPress={()=>{
+            async function clearData(){
+                await AsyncStorage.removeItem('name');
+                await AsyncStorage.removeItem('email');
+              }
+              clearData();
+        }}
+    >
+        <View style={{
+            width: 70,
+            height: 70,
             
         }}>
         
@@ -137,11 +165,13 @@ const Tabs = () =>{
                 }
             }}
             />
-            <Tab.Screen name ='Logout' component={Logout} options={{
-                tabBarIcon: ({focused}) => {
-                    return(
+            <Tab.Screen name ='Logout' component={Logout} 
+                 options={{
+                    tabBarIcon: ({focused}) => {
+                        return(
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                        <Image
+                            
+                            <Image 
                             source={require('../assets/accountSettings.png')}
                             resizeMode='contain'
                             style={{
@@ -152,9 +182,14 @@ const Tabs = () =>{
                         />
                         <Text style={{color: focused ? '#fff' : '#000', fontSize: 12}}>Sair</Text>
                     </View>
-                    );
-                }
-            }}/>
+
+                        );
+                    },
+                    tabBarButton: (props)=>{
+                        return (<LogoutButton{...props}/>);
+                    }, unmountOnBlur: true
+                }}
+            />
 
         </Tab.Navigator>
     );

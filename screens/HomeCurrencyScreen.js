@@ -134,9 +134,7 @@ export default function HomeCurrencyScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
     flexDirection: "column",
     width: "100%",
     height: "100%",
@@ -145,7 +143,6 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     width: "100%",
     alignItems: "center",
-    justifyContent: "center",
   },
   picker: {
     width: "80%",
@@ -154,10 +151,10 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 1,
     borderRadius: 5,
-    marginBottom: 50,
+    marginBottom: 10,
   },
   cardsContainer: {
-    marginTop: "30%",
+    marginTop: "10%",
     height: 300,
     width: "100%",
     alignItems: "center",
@@ -173,7 +170,6 @@ const styles = StyleSheet.create({
     borderColor: "#E1BD5E",
     borderRadius: 5,
     borderWidth: 0.5,
-    marginBottom: 20,
     elevation: 3, // Android
   },
   modalView: {

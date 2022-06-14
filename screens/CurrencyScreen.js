@@ -51,7 +51,7 @@ export default function CurrencyScreen() {
         <Text style={{ fontSize: 40, fontWeight: "300", top: -50 }}>
           Conversão de moedas
         </Text>
-        <Text style={{ fontSize: 17, fontWeight: "800", marginTop: 10 }}>
+        <Text style={{ fontSize: 17, fontWeight: "800",  top: -50 }}>
           Escolha a moeda e digite o valor que quiser converter.
         </Text>
       </View>
@@ -83,7 +83,7 @@ export default function CurrencyScreen() {
         </Picker>
         <View
           style={{
-            bottom: -60,
+            bottom: -50,
             position: "absolute",
             width: 100,
             height: 100,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   bodyContainer: {
     backgroundColor: "#e6c98c",
     width: "90%",
-    bottom: 100,
+    bottom: 80,
     height: 400,
     alignItems: "center",
     borderRadius: 25,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: 250,
     width: "90%",
-    top: -50,
+    top: 20,
   },
   input: {
     width: "80%",

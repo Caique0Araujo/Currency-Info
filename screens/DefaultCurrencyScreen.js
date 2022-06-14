@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity, Modal, Pressable } from "reac
 
 import CurrencyCard from "../components/CurrencyCard";
 import store from "../components/store";
-import Context from "../context/context";
 
 const cardDollar = {
   name: "Dollar",
@@ -130,13 +129,11 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   bodyContainer: {
-    marginTop: "5%",
     width: "100%",
     flex: 1,
     alignItems: "center",
   },
   cardsContainer: {
-    marginTop: "10%",
     width: "100%",
     flex: 1,
     alignItems: "center",
