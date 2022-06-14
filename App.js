@@ -3,6 +3,10 @@ import Context from './context/context';
 import Decider from "./components/decider";
 import retrive from "./components/retrieve";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
 
 const MyTheme = {
   dark: false,
@@ -37,7 +41,20 @@ const App = () => {
     return (
       <Context.Provider value={[authenticated, setAuthenticated]}>
         <NavigationContainer theme={MyTheme}>
-            <Decider/>
+        <Stack.Navigator screenOptions={{
+            headerShown: false,
+            headerStyle: {
+                backgroundColor: '#e6c98c',
+              },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                fontWeight: '400',
+              },
+        }}>
+          <Stack.Screen name="Decider" component={Decider} options={{title: "Decider"}}>
+
+          </Stack.Screen>
+        </Stack.Navigator>
         </NavigationContainer>
       </Context.Provider>
     );

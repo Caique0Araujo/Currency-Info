@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {useEffect} from 'react';
 
 const Logout = ({navigation}) => {
 
@@ -11,6 +11,8 @@ const Logout = ({navigation}) => {
       }
       clearData();
     }, []);
+
+    return navigation.navigate("Decider");
 
 
 }

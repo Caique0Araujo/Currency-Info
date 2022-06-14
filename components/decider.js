@@ -6,15 +6,15 @@ import Context from '../context/context';
 import Retrive from '../components/retrieve';
 
 
-function Decider(){
+function Decider({navigation}){
 
     const [ authenticated ] = useContext(Context);
 
 
     if (!authenticated?.email)
-        return <Login />;
+        return <Login navigation={navigation} />;
     else
-        return <Tabs />;
+        return <Tabs navigation={navigation} />;
 };
 
 export default Decider;
