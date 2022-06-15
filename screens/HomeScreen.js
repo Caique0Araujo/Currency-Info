@@ -4,26 +4,49 @@ import { SafeAreaView, StatusBar, Image } from "react-native";
 import Context from "../context/context";
 import { useContext, useEffect, useState } from "react";
 import retrive from "../components/retrieve";
+import CurrencyRepository from "../CurrencyRepository/CurrencyRepository";
 
-export default function HomeScreen({ navigation }) {
+
+async function retrieveValues(symbol){
+  const value = await CurrencyRepository.getExchange(symbol);
+  return value;
+}
+
+
+export default function HomeScreen() {
   const [authenticated] = useContext(Context);
-  const [defaultCurrency, setDefaultCurrency] = useState("Real");
-  const [currency1, setCurrency1] = useState("Dollar");
-  const [currency2, setCurrency2] = useState("Euro");
-  const [currency3, setCurrency3] = useState("Pound");
+  const [defaultCurrency, setDefaultCurrency] = useState({name: "Real", symbol: "brl"});
+  const [currency1, setCurrency1] = useState({name:"Dollar", symbol: "usd"});
+  const [currency2, setCurrency2] = useState({name:"Euro", symbol: "eur"});
+  const [currency3, setCurrency3] = useState({name:"Libra", symbol: "gbp"});
+  const [tets, setTest] = useState({});
 
   useEffect(() => {
     async function retrieveData() {
-      const data = await retrive("defaultCurrency");
-      const c1 = await retrive("currency1");
-      const c2 = await retrive("currency2");
-      const c3 = await retrive("currency3");
-      if(data)setDefaultCurrency(data);
-      if(c1)setCurrency1(c1);
-      if(c2)setCurrency2(c2);
-      if(c3)setCurrency3(c3);
+      const currencyName = await retrive("defaultCurrencyName");
+      const currencySymbol = await retrive("defaultCurrencySymbol");
+
+      const c1Name = await retrive("currency1Name");
+      const c2Name = await retrive("currency2Name");
+      const c3Name = await retrive("currency3Name");
+
+
+      const c1Symbol = await retrive("currency1Symbol");
+      const c2Symbol = await retrive("currency2Symbol");
+      const c3Symbol = await retrive("currency3Symbol");
+
+      if(currencyName)setDefaultCurrency({name: currencyName, symbol: currencySymbol});
+      if(c1Name)setCurrency1({name: c1Name, symbol: c1Symbol});
+      if(c2Name)setCurrency2({name: c2Name, symbol: c2Symbol});
+      if(c3Name)setCurrency3({name: c3Name, symbol: c3Symbol});
+      const value = await retrieveValues(currencySymbol);
+      setTest(value);
+
     }
+
+   
     retrieveData();
+
   }, []);
 
   return (
@@ -50,7 +73,7 @@ export default function HomeScreen({ navigation }) {
             style={{ tintColor: "white" }}
           ></Image>
           <Text style={styles.currencyText}>
-            Valor da moeda {defaultCurrency}:
+            Valor da moeda {defaultCurrency.name}:
           </Text>
         </View>
       </View>
@@ -59,25 +82,27 @@ export default function HomeScreen({ navigation }) {
           <ScrollView style={styles.scrollView} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
           <CurrencyCard
             objeto={{
-              name: currency1,
-              value: "R$ 200",
+              name: currency1.name,
+              value: tets[currency1.symbol],
               image: require(`../assets/dollar.png`),
             }}
           />
           <CurrencyCard
             objeto={{
-              name: currency2,
-              value: "R$ 200",
+              name: currency2.name,
+              value: tets[currency2.symbol],
               image: require("../assets/dollar.png"),
             }}
           />
           <CurrencyCard
             objeto={{
-              name: currency3,
-              value: "R$ 200",
+              name: currency3.name,
+              value: tets[currency3.symbol],
               image: require("../assets/dollar.png"),
             }}
           />
+          <Text>
+          </Text>
           </ScrollView>
         </View>
       </View>

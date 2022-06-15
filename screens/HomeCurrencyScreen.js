@@ -9,26 +9,31 @@ async function storeData(key, name) {
 }
 
 export default function HomeCurrencyScreen({ navigation }) {
-  const [currency1, setCurrency1] = useState("");
-  const [currency2, setCurrency2] = useState("");
-  const [currency3, setCurrency3] = useState("");
+  const [currency1, setCurrency1] = useState({name:"Dollar", symbol: "usd"});
+  const [currency2, setCurrency2] = useState({name:"Euro", symbol: "eur"});
+  const [currency3, setCurrency3] = useState({name:"Libra", symbol: "gbp"});
   const [modalVisible, setModalVisible] = useState(false);
 
   
 
   useEffect(() => {
     async function retrieveData() {
-      const c1 = await retrive("currency1");
-      const c2 = await retrive("currency2");
-      const c3 = await retrive("currency3");
+      const c1Name = await retrive("currency1Name");
+      const c2Name = await retrive("currency2Name");
+      const c3Name = await retrive("currency3Name");
 
-      setCurrency1('Real');
-      setCurrency2('Real');
-      setCurrency3('Real');
 
-      if(c1) setCurrency1(c1);
-      if(c2) setCurrency2(c2);
-      if(c3) setCurrency3(c3);
+      const c1Symbol = await retrive("currency1Symbol");
+      const c2Symbol = await retrive("currency2Symbol");
+      const c3Symbol = await retrive("currency3Symbol");
+
+      setCurrency1({name:'Real', symbol: 'brl'});
+      setCurrency2({name:'Real', symbol: 'brl'});
+      setCurrency3({name:'Real', symbol: 'brl'});
+
+      if(c1Name) setCurrency1({name: c1Name, symbol: c1Symbol});
+      if(c2Name) setCurrency2({name: c2Name, symbol: c2Symbol});
+      if(c3Name) setCurrency3({name: c3Name, symbol: c3Symbol});
     }
     retrieveData();
   }, []);
@@ -51,47 +56,50 @@ export default function HomeCurrencyScreen({ navigation }) {
         <View style={styles.cardsContainer}>
           <Picker
             style={styles.picker}
-            selectedValue={currency1}
-            value={currency1}
+            selectedValue={currency1.name}
+            value={{name: currency1.name, symbol: currency1.symbol}}
             onValueChange={(itemValue, itemIndex) => {
-              setCurrency1(itemValue);
-              storeData("currency1", itemValue);
+              setCurrency1({name: itemValue.name, symbol: itemValue.symbol});
+              console.log(itemValue)
+
             }}
           >
-            <Picker.Item label="Real" value="Real" />
-            <Picker.Item label="Dollar" value="Dollar" />
-            <Picker.Item label="Libra" value="Libra" />
-            <Picker.Item label="Yen" value="Yen" />
-            <Picker.Item label="Euro" value="Euro" />
+            <Picker.Item label="Real" value={{name: 'Real', symbol: 'brl'}} />
+            <Picker.Item label="Dollar" value={{name: 'Dolar', symbol: 'usd'}} />
+            <Picker.Item label="Libra" value={{name: 'Libra', symbol: 'gbp'}}/>
+            <Picker.Item label="Yen" value={{name: 'Iene', symbol: 'jpy'}} />
+            <Picker.Item label="Euro" value={{name: 'Euro', symbol: 'eur'}} />
           </Picker>
           <Picker
             style={styles.picker}
-            selectedValue={currency2}
-            value={currency2}
+            selectedValue={currency2.name}
+            value={{name: currency2.name, symbol: currency2.symbol}}
             onValueChange={(itemValue, itemIndex) => {
-              setCurrency2(itemValue);
-              storeData("currency2", itemValue);
+              setCurrency2({name: itemValue.name, symbol: itemValue.symbol});
+
             }}
           >
-            <Picker.Item label="Real" value="Real" />
-            <Picker.Item label="Dollar" value="Dollar" />
-            <Picker.Item label="Libra" value="Libra" />
-            <Picker.Item label="Yen" value="Yen" />
-            <Picker.Item label="Euro" value="Euro" />
+            <Picker.Item label="Real" value={{name: 'Real', symbol: 'brl'}} />
+            <Picker.Item label="Dollar" value={{name: 'Dolar', symbol: 'usd'}} />
+            <Picker.Item label="Libra" value={{name: 'Libra', symbol: 'gbp'}}/>
+            <Picker.Item label="Yen" value={{name: 'Iene', symbol: 'jpy'}} />
+            <Picker.Item label="Euro" value={{name: 'Euro', symbol: 'eur'}} />
           </Picker>
           <Picker
             style={styles.picker}
-            selectedValue={currency3}
-            value={currency3}
+            selectedValue={currency3.name}
+            value={{name: currency3.name, symbol: currency3.symbol}}
             onValueChange={(itemValue, itemIndex) => {
-              setCurrency3(itemValue);
+              setCurrency3({name: itemValue.name, symbol: itemValue.symbol});
+
+
             }}
           >
-            <Picker.Item label="Real" value="Real" />
-            <Picker.Item label="Dollar" value="Dollar" />
-            <Picker.Item label="Libra" value="Libra" />
-            <Picker.Item label="Yen" value="Yen" />
-            <Picker.Item label="Euro" value="Euro" />
+            <Picker.Item label="Real" value={{name: 'Real', symbol: 'brl'}} />
+            <Picker.Item label="Dollar" value={{name: 'Dolar', symbol: 'usd'}} />
+            <Picker.Item label="Libra" value={{name: 'Libra', symbol: 'gbp'}}/>
+            <Picker.Item label="Yen" value={{name: 'Iene', symbol: 'jpy'}} />
+            <Picker.Item label="Euro" value={{name: 'Euro', symbol: 'eur'}} />
           </Picker>
         </View>
         <Modal
@@ -117,9 +125,12 @@ export default function HomeCurrencyScreen({ navigation }) {
         <TouchableOpacity
           style={styles.bttn}
           onPress={() => {
-            storeData("currency1", currency1);
-            storeData("currency2", currency2);
-            storeData("currency3", currency3);
+            storeData("currency1Name", currency1.name);
+            storeData("currency1Symbol", currency1.symbol);
+            storeData("currency2Name", currency2.name);
+            storeData("currency2Symbol", currency2.symbol);
+            storeData("currency3Name", currency3.name);
+            storeData("currency3ymbol", currency3.symbol);
             setModalVisible(true);
           }}
         >

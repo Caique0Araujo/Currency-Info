@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Modal, Pressable } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import CurrencyCard from "../components/CurrencyCard";
 import store from "../components/store";
@@ -17,7 +18,7 @@ const cardEuro = {
 };
 
 const cardYen = {
-  name: "Yen",
+  name: "Iene",
   value: 200,
   image: require("../assets/yen.png"),
 };
@@ -29,10 +30,16 @@ const cardReal = {
 };
 
 const cardPound = {
-  name: "Pound",
+  name: "Libra",
   value: 200,
   image: require("../assets/pound.png"),
 };
+
+
+async function setCurrency(name, symbol){
+  await storeData('defaultCurrencyName', name);
+  await storeData('defaultCurrencySymbol', symbol);
+}
 
 
 async function storeData(key, name){
@@ -41,7 +48,7 @@ async function storeData(key, name){
 
 export default function DefaultCurrencyScreen() {
 
-  const [defaultCurrency, setDefaultCurrency] = useState('');
+  const [defaultCurrency, setDefaultCurrency] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
 
 
@@ -61,36 +68,44 @@ export default function DefaultCurrencyScreen() {
         </Text>
 
         <View style={styles.cardsContainer}>
-          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
-            storeData('defaultCurrency', 'Real');
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={async ()=>{
+            await setCurrency('Real', 'brl');
             setModalVisible(true);
             
           }}>
             <CurrencyCard objeto={cardReal} />
           </TouchableOpacity>
-          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
-            storeData('defaultCurrency', 'Euro');
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={async ()=>{
+            await setCurrency('Euro', 'eur');
+
             setModalVisible(true);
 
           }}>
             <CurrencyCard objeto={cardEuro} />
           </TouchableOpacity>
-          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
-            storeData('defaultCurrency', 'Yen');
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={async ()=>{
+
+            await setCurrency('Iene', 'jpy');
+
             setModalVisible(true);
           }}>
             <CurrencyCard objeto={cardYen} />
           </TouchableOpacity>
-          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
-            storeData('defaultCurrency', 'Pound');
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={async ()=>{
+
+            await setCurrency('Libra', 'gbp');
+
             setModalVisible(true);
           }}>
             <CurrencyCard objeto={cardPound} />
           </TouchableOpacity>
-          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={()=>{
-            storeData('defaultCurrency', 'Dollar');
+          <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={async function pqp(){
+
+            await setCurrency('Dolar', 'usd');
+
             setModalVisible(true);
-          }}>
+          }
+          }>
            <CurrencyCard objeto={cardDollar} />
           </TouchableOpacity>
 
