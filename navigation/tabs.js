@@ -7,6 +7,11 @@ import AboutScreen from '../screens/AboutScreen';
 import CurrencyScreen from '../screens/CurrencyScreen';
 import HomeScreen from '../screens/HomeScreen';
 import Logout from '../components/logout';
+import Context from "../context/context";
+import { useContext } from "react";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 
 import Stacks from './stack';
 
@@ -42,7 +47,9 @@ const CustomTabBarButton = ({children, onPress}) => {
 }
 
 
-const LogoutButton = ({children}) => {
+const LogoutButton = ({children, navigation}) => {
+  const [authenticated, setAuthenticated] = useContext(Context);
+
     return(
         <TouchableOpacity
         style={{
@@ -55,6 +62,8 @@ const LogoutButton = ({children}) => {
                 await AsyncStorage.removeItem('email');
               }
               clearData();
+              setAuthenticated(null);
+              navigation.replace("Decider");
         }}
     >
         <View style={{
@@ -70,7 +79,7 @@ const LogoutButton = ({children}) => {
     
 }
 
-const Tabs = () =>{
+const Tabs = ({navigation}) =>{
     return(
         <Tab.Navigator
             screenOptions={{
@@ -186,7 +195,7 @@ const Tabs = () =>{
                         );
                     },
                     tabBarButton: (props)=>{
-                        return (<LogoutButton{...props}/>);
+                        return (<LogoutButton{...props} navigation={navigation}/>);
                     }, unmountOnBlur: true
                 }}
             />

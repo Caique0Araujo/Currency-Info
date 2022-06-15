@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Currency Info",
+    "scheme": "currencyInfo",
     "slug": "currencyInfo",
     "version": "1.0.0",
     "orientation": "portrait",

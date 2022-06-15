@@ -85,8 +85,8 @@ export default function CurrencyScreen() {
           style={{
             bottom: -50,
             position: "absolute",
-            width: 100,
-            height: 100,
+            width: 90,
+            height: 90,
             borderRadius: 70,
             backgroundColor: "rgb(238, 238, 238)",
           }}
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   bodyContainer: {
     backgroundColor: "#e6c98c",
     width: "90%",
-    bottom: 80,
+    bottom: 87,
     height: 400,
     alignItems: "center",
     borderRadius: 25,
