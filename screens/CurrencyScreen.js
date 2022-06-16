@@ -2,44 +2,55 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useState, useEffect } from "react";
 import retrive from "../components/retrieve";
+import CurrencyRepository from "../CurrencyRepository/CurrencyRepository";
 
-function convert(value, currency) {
+
+function convert(value, currency, rate) {
+
   if (currency === "Dollar") {
-    const dollarvalue = 5.06;
+    const dollarvalue = rate['usd'];
     return value * dollarvalue;
   }
 
   if (currency === "Euro") {
-    const euroValue = 5.25;
+    const euroValue = rate['eur'];
     return value * euroValue;
   }
 
   if(currency === "Real"){
-    const realValue = 1;
+    const realValue = rate['brl'];
     return value * realValue;
   }
 
   if(currency === "Pound"){
-    const poundValue = 6.25;
+    const poundValue = rate['gbp'];
     return value * poundValue;
   }
 
   if(currency === "Yen"){
-    const yenValue = 7.25;
+    const yenValue = rate['jpy'];
     return value * yenValue;
   }
   
+}
+async function retrieveValues(symbol){
+  const value = await CurrencyRepository.getExchange(symbol);
+  return value;
 }
 
 export default function CurrencyScreen() {
   const [value, setValue] = useState(0);
   const [currency, setCurrency] = useState("Dollar");
-  const [defaultCurrency, setDefaultCurrency] = useState("");
+  const [defaultCurrency, setDefaultCurrency] = useState({name: "Real", symbol: "brl"});
+  const [tets, setTest] = useState({});
 
   useEffect(() => {
     async function retrieveData() {
-      const data = await retrive("defaultCurrency");
-      setDefaultCurrency(data);
+      const currencyName = await retrive("defaultCurrencyName");
+      const currencySymbol = await retrive("defaultCurrencySymbol");
+      if(currencyName)setDefaultCurrency({name: currencyName, symbol: currencySymbol});
+      const value = await retrieveValues(currencySymbol);
+      setTest(value);
 
     }
     retrieveData();
@@ -57,14 +68,14 @@ export default function CurrencyScreen() {
       </View>
       <View style={styles.bodyContainer}>
         <View style={styles.textContainer}>
-          <Text style={styles.name}>Valor do {defaultCurrency} em {currency}:</Text>
+          <Text style={styles.name}>Valor da moeda {defaultCurrency.name} em {currency}:</Text>
           <Text style={styles.value}>R$: {value}</Text>
         </View>
         <TextInput
           style={[styles.input, styles.shadowProp]}
           keyboardType="numeric"
-          onChangeText={(text) => {
-            setValue(convert(text, currency));
+          onChangeText={(value) => {
+            setValue(convert(value, currency, tets));
           }}
         />
         <Picker
