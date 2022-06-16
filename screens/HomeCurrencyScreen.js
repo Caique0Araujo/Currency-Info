@@ -8,10 +8,48 @@ async function storeData(key, name) {
   await store(key, name);
 }
 
+
+
+const currencys = [
+  {
+    key: 0,
+    name: "Dolar",
+    symbol: "usd"
+  },
+  {
+    key: 1,
+    name: "Euro",
+    symbol: "eur"
+  },
+  {
+    key: 2,
+    name: "Iene",
+    symbol: "jpy"
+  },
+  {
+    key: 3,
+    name: "Libra",
+    symbol: "gbp"
+  },
+  {
+    key: 4,
+    name: "Real",
+    symbol: "brl"
+  }
+]
+
+const pickerItems = currencys.map(
+  (currency)=>
+  <Picker.Item key={currency.key} label={currency.name} value={currency.symbol} />
+)
+
+
 export default function HomeCurrencyScreen({ navigation }) {
-  const [currency1, setCurrency1] = useState({name:"Dollar", symbol: "usd"});
-  const [currency2, setCurrency2] = useState({name:"Euro", symbol: "eur"});
-  const [currency3, setCurrency3] = useState({name:"Libra", symbol: "gbp"});
+  
+  const [currency1, setCurrency1] = useState({});
+  const [currency2, setCurrency2] = useState({});
+  const [currency3, setCurrency3] = useState({});
+
   const [modalVisible, setModalVisible] = useState(false);
 
   
@@ -27,16 +65,22 @@ export default function HomeCurrencyScreen({ navigation }) {
       const c2Symbol = await retrive("currency2Symbol");
       const c3Symbol = await retrive("currency3Symbol");
 
-      setCurrency1({name:'Real', symbol: 'brl'});
-      setCurrency2({name:'Real', symbol: 'brl'});
-      setCurrency3({name:'Real', symbol: 'brl'});
+      setCurrency1({name:"Dolar", symbol: "usd"});
+      setCurrency2({name:"Euro", symbol: "eur"});
+      setCurrency3({name:"Libra", symbol: "gbp"});
+
 
       if(c1Name) setCurrency1({name: c1Name, symbol: c1Symbol});
       if(c2Name) setCurrency2({name: c2Name, symbol: c2Symbol});
       if(c3Name) setCurrency3({name: c3Name, symbol: c3Symbol});
+
+
+
     }
     retrieveData();
   }, []);
+
+
 
   return (
     <View style={styles.container}>
@@ -57,49 +101,37 @@ export default function HomeCurrencyScreen({ navigation }) {
           <Picker
             style={styles.picker}
             selectedValue={currency1.name}
-            value={{name: currency1.name, symbol: currency1.symbol}}
+            value={currency1.symbol}
             onValueChange={(itemValue, itemIndex) => {
-              setCurrency1({name: itemValue.name, symbol: itemValue.symbol});
-              console.log(itemValue)
+
+              setCurrency1({name: currencys[itemIndex].name, symbol: itemValue});
 
             }}
           >
-            <Picker.Item label="Real" value={{name: 'Real', symbol: 'brl'}} />
-            <Picker.Item label="Dollar" value={{name: 'Dolar', symbol: 'usd'}} />
-            <Picker.Item label="Libra" value={{name: 'Libra', symbol: 'gbp'}}/>
-            <Picker.Item label="Yen" value={{name: 'Iene', symbol: 'jpy'}} />
-            <Picker.Item label="Euro" value={{name: 'Euro', symbol: 'eur'}} />
+          {pickerItems}
           </Picker>
           <Picker
             style={styles.picker}
             selectedValue={currency2.name}
-            value={{name: currency2.name, symbol: currency2.symbol}}
+            value={currency2.symbol}
             onValueChange={(itemValue, itemIndex) => {
-              setCurrency2({name: itemValue.name, symbol: itemValue.symbol});
+
+              setCurrency2({name: currencys[itemIndex].name, symbol: itemValue});
 
             }}
           >
-            <Picker.Item label="Real" value={{name: 'Real', symbol: 'brl'}} />
-            <Picker.Item label="Dollar" value={{name: 'Dolar', symbol: 'usd'}} />
-            <Picker.Item label="Libra" value={{name: 'Libra', symbol: 'gbp'}}/>
-            <Picker.Item label="Yen" value={{name: 'Iene', symbol: 'jpy'}} />
-            <Picker.Item label="Euro" value={{name: 'Euro', symbol: 'eur'}} />
+          {pickerItems}
           </Picker>
           <Picker
             style={styles.picker}
             selectedValue={currency3.name}
-            value={{name: currency3.name, symbol: currency3.symbol}}
+            value={currency3.symbol}
             onValueChange={(itemValue, itemIndex) => {
-              setCurrency3({name: itemValue.name, symbol: itemValue.symbol});
-
+              setCurrency3({name: currencys[itemIndex].name, symbol: itemValue});
 
             }}
           >
-            <Picker.Item label="Real" value={{name: 'Real', symbol: 'brl'}} />
-            <Picker.Item label="Dollar" value={{name: 'Dolar', symbol: 'usd'}} />
-            <Picker.Item label="Libra" value={{name: 'Libra', symbol: 'gbp'}}/>
-            <Picker.Item label="Yen" value={{name: 'Iene', symbol: 'jpy'}} />
-            <Picker.Item label="Euro" value={{name: 'Euro', symbol: 'eur'}} />
+          {pickerItems}
           </Picker>
         </View>
         <Modal
@@ -124,13 +156,13 @@ export default function HomeCurrencyScreen({ navigation }) {
         </Modal>
         <TouchableOpacity
           style={styles.bttn}
-          onPress={() => {
-            storeData("currency1Name", currency1.name);
-            storeData("currency1Symbol", currency1.symbol);
-            storeData("currency2Name", currency2.name);
-            storeData("currency2Symbol", currency2.symbol);
-            storeData("currency3Name", currency3.name);
-            storeData("currency3ymbol", currency3.symbol);
+          onPress={async () => {
+            await storeData("currency1Name", currency1.name);
+            await storeData("currency1Symbol", currency1.symbol);
+            await storeData("currency2Name", currency2.name);
+            await storeData("currency2Symbol", currency2.symbol);
+            await storeData("currency3Name", currency3.name);
+            await storeData("currency3Symbol", currency3.symbol);
             setModalVisible(true);
           }}
         >
