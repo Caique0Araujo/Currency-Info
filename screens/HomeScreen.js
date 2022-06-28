@@ -39,8 +39,10 @@ export default function HomeScreen() {
       if(c1Name)setCurrency1({name: c1Name, symbol: c1Symbol});
       if(c2Name)setCurrency2({name: c2Name, symbol: c2Symbol});
       if(c3Name)setCurrency3({name: c3Name, symbol: c3Symbol});
-      const value = await retrieveValues(currencySymbol);
+
+      const value = await retrieveValues(defaultCurrency.symbol);
       setTest(value);
+
 
     }
 

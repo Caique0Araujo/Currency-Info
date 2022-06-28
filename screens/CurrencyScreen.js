@@ -38,23 +38,38 @@ async function retrieveValues(symbol){
   return value;
 }
 
+const data = {
+  "name": "Real", "symbol": "brl"
+}
+
+
 export default function CurrencyScreen() {
+
   const [value, setValue] = useState(0);
   const [currency, setCurrency] = useState("Dollar");
-  const [defaultCurrency, setDefaultCurrency] = useState({name: "Real", symbol: "brl"});
+  const [defaultCurrency, setDefaultCurrency] = useState(data);
   const [tets, setTest] = useState({});
 
   useEffect(() => {
     async function retrieveData() {
       const currencyName = await retrive("defaultCurrencyName");
       const currencySymbol = await retrive("defaultCurrencySymbol");
-      if(currencyName)setDefaultCurrency({name: currencyName, symbol: currencySymbol});
-      const value = await retrieveValues(currencySymbol);
-      setTest(value);
+
+      if(currencyName){
+
+        let data = {"name": currencyName, "symbol": currencySymbol};
+        setDefaultCurrency(data);
+
+      }
+      
 
     }
     retrieveData();
   }, []);
+
+  const baseValue = retrieveValues(defaultCurrency.symbol).then((response)=>{
+   setTest(response);
+  })
 
   return (
     <View style={styles.container}>
