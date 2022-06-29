@@ -1,25 +1,30 @@
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import CurrencyCard from "../components/CurrencyCard";
 import { SafeAreaView, StatusBar, Image } from "react-native";
 import Context from "../context/context";
 import { useContext, useEffect, useState } from "react";
 import retrive from "../components/retrieve";
-import CurrencyRepository from "../CurrencyRepository/CurrencyRepository";
-
-
-async function retrieveValues(symbol){
-  const value = await CurrencyRepository.getExchange(symbol);
-  return value;
-}
-
+import getExchangeValues from "../repositories/getExchangeValues";
 
 export default function HomeScreen() {
   const [authenticated] = useContext(Context);
-  const [defaultCurrency, setDefaultCurrency] = useState({name: "Real", symbol: "brl"});
-  const [currency1, setCurrency1] = useState({name:"Dollar", symbol: "usd"});
-  const [currency2, setCurrency2] = useState({name:"Euro", symbol: "eur"});
-  const [currency3, setCurrency3] = useState({name:"Libra", symbol: "gbp"});
-  const [tets, setTest] = useState({});
+
+  const [defaultCurrency, setDefaultCurrency] = useState({
+    name: "Real",
+    symbol: "brl",
+  });
+
+  const [currency1, setCurrency1] = useState({ name: "Dollar", symbol: "usd" });
+  const [currency2, setCurrency2] = useState({ name: "Euro", symbol: "eur" });
+  const [currency3, setCurrency3] = useState({ name: "Libra", symbol: "gbp" });
+
+  const [rates, setRates] = useState({});
 
   useEffect(() => {
     async function retrieveData() {
@@ -30,26 +35,35 @@ export default function HomeScreen() {
       const c2Name = await retrive("currency2Name");
       const c3Name = await retrive("currency3Name");
 
-
       const c1Symbol = await retrive("currency1Symbol");
       const c2Symbol = await retrive("currency2Symbol");
       const c3Symbol = await retrive("currency3Symbol");
 
-      if(currencyName)setDefaultCurrency({name: currencyName, symbol: currencySymbol});
-      if(c1Name)setCurrency1({name: c1Name, symbol: c1Symbol});
-      if(c2Name)setCurrency2({name: c2Name, symbol: c2Symbol});
-      if(c3Name)setCurrency3({name: c3Name, symbol: c3Symbol});
+      let data;
 
-      const value = await retrieveValues(defaultCurrency.symbol);
-      setTest(value);
+      if (currencyName && currencySymbol){
+        setDefaultCurrency({ name: currencyName, symbol: currencySymbol });
+        console.log(currencySymbol)
+        data = await getExchangeValues(currencySymbol);
 
+      }else{
+        data = await getExchangeValues(defaultCurrency.symbol);
+
+      }
+
+      if (c1Name && c1Symbol) setCurrency1({ name: c1Name, symbol: c1Symbol });
+      if (c2Name && c2Symbol) setCurrency2({ name: c2Name, symbol: c2Symbol });
+      if (c3Name && c3Symbol) setCurrency3({ name: c3Name, symbol: c3Symbol });
+
+
+      setRates(data);
 
     }
 
-   
     retrieveData();
-
   }, []);
+
+
 
   return (
     <SafeAreaView style={[styles.container, styles.shadow]}>
@@ -81,30 +95,36 @@ export default function HomeScreen() {
       </View>
       <View style={styles.bodyContainer}>
         <View style={styles.cardsContainer}>
-          <ScrollView style={styles.scrollView} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <CurrencyCard
-            objeto={{
-              name: currency1.name,
-              value: tets[currency1.symbol],
-              image: require(`../assets/dollar.png`),
+          <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={{
+              flexGrow: 1,
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
-          <CurrencyCard
-            objeto={{
-              name: currency2.name,
-              value: tets[currency2.symbol],
-              image: require("../assets/dollar.png"),
-            }}
-          />
-          <CurrencyCard
-            objeto={{
-              name: currency3.name,
-              value: tets[currency3.symbol],
-              image: require("../assets/dollar.png"),
-            }}
-          />
-          <Text>
-          </Text>
+          >
+            <CurrencyCard
+              objeto={{
+                name: currency1.name,
+                value: rates[currency1.symbol],
+                image: require(`../assets/dollar.png`),
+              }}
+            />
+            <CurrencyCard
+              objeto={{
+                name: currency2.name,
+                value: rates[currency2.symbol],
+                image: require("../assets/dollar.png"),
+              }}
+            />
+            <CurrencyCard
+              objeto={{
+                name: currency3.name,
+                value: rates[currency3.symbol],
+                image: require("../assets/dollar.png"),
+              }}
+            />
+            <Text></Text>
           </ScrollView>
         </View>
       </View>
@@ -146,6 +166,7 @@ const styles = StyleSheet.create({
   bodyContainer: {
     width: "100%",
     alignItems: "center",
+    justifyContent: "center"
   },
   defaultText: {
     color: "white",
@@ -169,6 +190,7 @@ const styles = StyleSheet.create({
   cardsContainer: {
     width: "100%",
     alignItems: "center",
+    marginTop: "2em",
   },
   currencyContainer: {
     bottom: -80,
@@ -182,24 +204,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   scrollView: {
-    width: '100%',
+    width: "100%",
     height: 350,
   },
 });
 
-/*
-  
-  container 
-
-  backgroundColor: 'white',
-        position: 'absolute',
-        bottom: 100,
-        left: 20,      
-        right: 20,
-        height: 700,
-        elevation: 0,
-  
-        borderRadius: 15,
-  
-  
-  */

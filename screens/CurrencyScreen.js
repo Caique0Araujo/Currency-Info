@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useState, useEffect } from "react";
 import retrive from "../components/retrieve";
-import CurrencyRepository from "../CurrencyRepository/CurrencyRepository";
+import getExchangeValues from "../repositories/getExchangeValues";
 
 
 function convert(value, currency, rate) {
@@ -33,14 +33,12 @@ function convert(value, currency, rate) {
   }
   
 }
-async function retrieveValues(symbol){
-  const value = await CurrencyRepository.getExchange(symbol);
-  return value;
-}
+
 
 const data = {
   "name": "Real", "symbol": "brl"
 }
+
 
 
 export default function CurrencyScreen() {
@@ -48,28 +46,33 @@ export default function CurrencyScreen() {
   const [value, setValue] = useState(0);
   const [currency, setCurrency] = useState("Dollar");
   const [defaultCurrency, setDefaultCurrency] = useState(data);
-  const [tets, setTest] = useState({});
+  const [rates, setRates] = useState({});
 
   useEffect(() => {
     async function retrieveData() {
       const currencyName = await retrive("defaultCurrencyName");
       const currencySymbol = await retrive("defaultCurrencySymbol");
 
-      if(currencyName){
+      let data;
 
-        let data = {"name": currencyName, "symbol": currencySymbol};
-        setDefaultCurrency(data);
+      if (currencyName && currencySymbol){
+        setDefaultCurrency({ name: currencyName, symbol: currencySymbol });
+        console.log(currencySymbol)
+        data = await getExchangeValues(currencySymbol);
+
+      }else{
+        data = await getExchangeValues(defaultCurrency.symbol);
 
       }
-      
+
+      setRates(data);
+
 
     }
     retrieveData();
   }, []);
 
-  const baseValue = retrieveValues(defaultCurrency.symbol).then((response)=>{
-   setTest(response);
-  })
+
 
   return (
     <View style={styles.container}>
@@ -90,7 +93,7 @@ export default function CurrencyScreen() {
           style={[styles.input, styles.shadowProp]}
           keyboardType="numeric"
           onChangeText={(value) => {
-            setValue(convert(value, currency, tets));
+            setValue(convert(value, currency, rates));
           }}
         />
         <Picker
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
   bodyContainer: {
     backgroundColor: "#e6c98c",
     width: "90%",
-    bottom: 87,
+    bottom: 110,
     height: 400,
     alignItems: "center",
     borderRadius: 25,
