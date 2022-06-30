@@ -57,7 +57,6 @@ export default function CurrencyScreen() {
 
       if (currencyName && currencySymbol){
         setDefaultCurrency({ name: currencyName, symbol: currencySymbol });
-        console.log(currencySymbol)
         data = await getExchangeValues(currencySymbol);
 
       }else{

@@ -1,5 +1,4 @@
 import {
-  DevSettings,
   Image,
   StyleSheet,
   Text,
@@ -17,13 +16,13 @@ WebBrowser.maybeCompleteAuthSession();
 
 export default function  LoginScreen( ) {
 
+
   const [authenticated, setAuthenticated] = useContext(Context);
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:
       "631546079521-gan0u86e7vmonk8iera0lmrmkb88dbnq.apps.googleusercontent.com",
-    // iosClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
     androidClientId:
-      "631546079521-gan0u86e7vmonk8iera0lmrmkb88dbnq.apps.googleusercontent.com",
+      "631546079521-9q6c1pde5s1rvu7r49n67paqpnaaevr3.apps.googleusercontent.com",
     webClientId:
       "631546079521-gan0u86e7vmonk8iera0lmrmkb88dbnq.apps.googleusercontent.com",
   });

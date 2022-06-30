@@ -85,7 +85,7 @@ const Tabs = ({ navigation }) => {
           elevation: 0,
           backgroundColor: "#e6c98c",
           borderRadius: 10,
-          height: "4em",
+          height: 80,
           ...styles.shadow,
         },
       }}

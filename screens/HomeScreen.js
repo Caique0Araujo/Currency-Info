@@ -43,7 +43,6 @@ export default function HomeScreen() {
 
       if (currencyName && currencySymbol){
         setDefaultCurrency({ name: currencyName, symbol: currencySymbol });
-        console.log(currencySymbol)
         data = await getExchangeValues(currencySymbol);
 
       }else{
@@ -190,7 +189,7 @@ const styles = StyleSheet.create({
   cardsContainer: {
     width: "100%",
     alignItems: "center",
-    marginTop: "2em",
+    marginTop: 20,
   },
   currencyContainer: {
     bottom: -80,
