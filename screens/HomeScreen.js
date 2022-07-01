@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 25,
   },
   bodyContainer: {
+    top: 20,
     width: "100%",
     alignItems: "center",
     justifyContent: "center"

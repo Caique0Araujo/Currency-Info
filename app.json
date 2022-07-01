@@ -1,11 +1,12 @@
 {
   "expo": {
     "name": "Currency Info",
-    "scheme": "currencyinfo",
+    "userInterfaceStyle": "light",
+    "scheme": "com.caiqueoaraujo.currencyinfo",
     "slug": "currencyInfo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/dollar.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -23,13 +24,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/currencyChange.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.caiqueoaraujo.currencyinfo"
+      "package": "com.caiqueoaraujo.currencyinfo",
+      "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/home.png"
     }
   }
 }

@@ -111,7 +111,7 @@ export default function CurrencyScreen() {
         </Picker>
         <View
           style={{
-            bottom: -50,
+            bottom: -60,
             position: "absolute",
             width: 90,
             height: 90,
@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     backgroundColor: "#e6c98c",
-    width: "90%",
-    bottom: 110,
+    width: "92%",
+    bottom: 105,
     height: 400,
     alignItems: "center",
     borderRadius: 25,
@@ -147,13 +147,14 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   headerContainer: {
+    marginBottom: 40,
     alignItems: "flex-start",
     padding: 20,
     left: 0,
     right: 0,
     height: 250,
     width: "90%",
-    top: 20,
+    top: 0,
   },
   input: {
     width: "80%",

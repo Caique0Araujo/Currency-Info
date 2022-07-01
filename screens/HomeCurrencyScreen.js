@@ -46,9 +46,9 @@ const pickerItems = currencys.map(
 
 export default function HomeCurrencyScreen({ navigation }) {
   
-  const [currency1, setCurrency1] = useState({});
-  const [currency2, setCurrency2] = useState({});
-  const [currency3, setCurrency3] = useState({});
+  const [currency1, setCurrency1] = useState({name:"Dolar", symbol: "usd"});
+  const [currency2, setCurrency2] = useState({name:"Euro", symbol: "eur"});
+  const [currency3, setCurrency3] = useState({name:"Libra", symbol: "gbp"});
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -65,15 +65,10 @@ export default function HomeCurrencyScreen({ navigation }) {
       const c2Symbol = await retrive("currency2Symbol");
       const c3Symbol = await retrive("currency3Symbol");
 
-      setCurrency1({name:"Dolar", symbol: "usd"});
-      setCurrency2({name:"Euro", symbol: "eur"});
-      setCurrency3({name:"Libra", symbol: "gbp"});
-
 
       if(c1Name) setCurrency1({name: c1Name, symbol: c1Symbol});
       if(c2Name) setCurrency2({name: c2Name, symbol: c2Symbol});
       if(c3Name) setCurrency3({name: c3Name, symbol: c3Symbol});
-
 
 
     }
