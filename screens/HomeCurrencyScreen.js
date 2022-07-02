@@ -47,8 +47,8 @@ const pickerItems = currencys.map(
 export default function HomeCurrencyScreen({ navigation }) {
   
   const [currency1, setCurrency1] = useState({name:"Dolar", symbol: "usd"});
-  const [currency2, setCurrency2] = useState({name:"Euro", symbol: "eur"});
-  const [currency3, setCurrency3] = useState({name:"Libra", symbol: "gbp"});
+  const [currency2, setCurrency2] = useState({name:"Dolar", symbol: "usd"});
+  const [currency3, setCurrency3] = useState({name:"Dolar", symbol: "usd"});
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -95,11 +95,11 @@ export default function HomeCurrencyScreen({ navigation }) {
         <View style={styles.cardsContainer}>
           <Picker
             style={styles.picker}
-            selectedValue={currency1.name}
+            selectedValue={currency1.symbol}
             value={currency1.symbol}
-            onValueChange={(itemValue, itemIndex) => {
+            onValueChange={ (itemValue, itemIndex) => {
 
-              setCurrency1({name: currencys[itemIndex].name, symbol: itemValue});
+               setCurrency1({name: currencys[itemIndex].name, symbol: itemValue});
 
             }}
           >
@@ -107,9 +107,9 @@ export default function HomeCurrencyScreen({ navigation }) {
           </Picker>
           <Picker
             style={styles.picker}
-            selectedValue={currency2.name}
+            selectedValue={currency2.symbol}
             value={currency2.symbol}
-            onValueChange={(itemValue, itemIndex) => {
+            onValueChange={ (itemValue, itemIndex) => {
 
               setCurrency2({name: currencys[itemIndex].name, symbol: itemValue});
 
@@ -119,10 +119,11 @@ export default function HomeCurrencyScreen({ navigation }) {
           </Picker>
           <Picker
             style={styles.picker}
-            selectedValue={currency3.name}
+            selectedValue={currency3.symbol}
             value={currency3.symbol}
-            onValueChange={(itemValue, itemIndex) => {
-              setCurrency3({name: currencys[itemIndex].name, symbol: itemValue});
+            onValueChange={ (itemValue, itemIndex) => {
+               setCurrency3({name: currencys[itemIndex].name, symbol: itemValue});
+               console.log(currencys[itemIndex].name, itemValue);
 
             }}
           >
@@ -158,6 +159,7 @@ export default function HomeCurrencyScreen({ navigation }) {
             await storeData("currency2Symbol", currency2.symbol);
             await storeData("currency3Name", currency3.name);
             await storeData("currency3Symbol", currency3.symbol);
+            console.log(currency3);
             setModalVisible(true);
           }}
         >

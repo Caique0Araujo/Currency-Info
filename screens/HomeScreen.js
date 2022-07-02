@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 25,
   },
   bodyContainer: {
-    top: 20,
+    top: 15,
     width: "100%",
     alignItems: "center",
     justifyContent: "center"
@@ -191,6 +191,8 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     marginTop: 20,
+    minWidth: "40%",
+    minHeight: "20%"
   },
   currencyContainer: {
     bottom: -80,

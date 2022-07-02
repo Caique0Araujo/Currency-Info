@@ -6,7 +6,7 @@ export default function CurrencyCard(props){
         <View style={[styles.container, styles.shadow] }>
                 <View style = {styles.subcontainer}>
                     <Image source= {props.objeto.image} style = {styles.tinyLogo} resizeMode='contain'/>
-                    <View style = {{ flexDirection: 'column', padding: 10, flex: 1, marginLeft: '5%' }}>
+                    <View style = {{ flexDirection: 'column', padding: 5, flex: 1, marginLeft: '5%' }}>
                         <Text style = {styles.name}>{props.objeto.name}</Text>
                         <Text style = {styles.value}>{props.objeto.value}</Text>
                     </View>
@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       borderWidth: 0.5,
       borderColor: 'transparent',
-      width: '100%',
-      maxWidth: '90%',
+      minWidth: '90%',
+      minHeight: '5%',
       backgroundColor: 'white',
-      top: 30,
+      top: 0,
       marginBottom: 20,
     },
     shadow: {
