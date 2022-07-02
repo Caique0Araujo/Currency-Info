@@ -6,7 +6,7 @@ export default function AboutScreen() {
     return (
       <ImageBackground source={require('../assets/background.jpg')} style={{width: "100%", height: "100%"}}>
         <View style={[styles.container]}>
-          <Image source={require('../assets/CurrencyInfo.png')} style={{width: 200, height: 200, borderRadius: 20}}/>
+          <Image source={require('../assets/CurrencyInfo.png')} style={{width: 200, height: 200, borderRadius: 20, top: 30}}/>
             <View style={styles.textContainer}>
               <Text style={styles.text}>
                 CurrencyInfo é um aplicativo desenvolvido por Caique Araújo para a disciplina de 
@@ -22,7 +22,6 @@ export default function AboutScreen() {
     container: {
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
       width: "100%", 
       height: "100%", 
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -38,14 +37,15 @@ export default function AboutScreen() {
       elevation: 5
   },
     textContainer: {
-      width: '80%',
-      height: 400,
+      width: '95%',
+      minHeight: '40%',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      top: 40
     },
     text: {
       color: '#fff',
       fontWeight: '800',
-      fontSize: 26
+      fontSize: 25,
     }
   });

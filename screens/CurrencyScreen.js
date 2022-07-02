@@ -109,16 +109,7 @@ export default function CurrencyScreen() {
           <Picker.Item label="Dollar" value="Dollar" />
           <Picker.Item label="Pound" value="Pound" />
         </Picker>
-        <View
-          style={{
-            bottom: -60,
-            position: "absolute",
-            width: 90,
-            height: 90,
-            borderRadius: 70,
-            backgroundColor: "rgb(238, 238, 238)",
-          }}
-        ></View>
+
       </View>
     </View>
   );
@@ -130,15 +121,16 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     alignItems: "center",
-    justifyContent: "flex-end",
   },
   bodyContainer: {
     backgroundColor: "#e6c98c",
     width: "92%",
-    bottom: 105,
-    height: 400,
+    minHeight: "40%",
+    maxHeight: "60%",
+    top: 10,
     alignItems: "center",
     borderRadius: 25,
+
   },
   textContainer: {
     width: "80%",
@@ -154,7 +146,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: 250,
     width: "90%",
-    top: 0,
+    top: '10%',
   },
   input: {
     width: "80%",

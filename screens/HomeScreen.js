@@ -81,7 +81,7 @@ export default function HomeScreen() {
             {authenticated?.name}
           </Text>
         </View>
-        <Text style={styles.defaultText}>Welcome to CurrencyINFO@</Text>
+        <Text style={styles.defaultText}>Bem vindo ao CurrencyINFO@</Text>
         <View style={[styles.currencyContainer, styles.shadow]}>
           <Image
             source={require("../assets/accountDefault.png")}

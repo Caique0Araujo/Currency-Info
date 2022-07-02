@@ -72,7 +72,7 @@ export default function  LoginScreen( ) {
           textAlign: "center",
         }}
       >
-        Welcome to CurrencyInfo! Please, make login to coninue.
+        Bem vindo ao CurrencyInfo!, faça login para continuar
       </Text>
       <View
         style={{
@@ -84,7 +84,7 @@ export default function  LoginScreen( ) {
         }}
       >
         <View style={styles.viewLogin}>
-          <Text style={{ color: "#e6c98c", fontSize: 18, fontWeight: "500" }}>
+          <Text style={{ color: "#000", fontSize: 18, fontWeight: "500" }}>
             Login
           </Text>
         </View>
@@ -119,16 +119,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   bttnLoginGoogle: {
-    backgroundColor: "red",
+    backgroundColor: "#db4437",
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
-    width: "45%",
+    width: "90%",
     height: 50,
     marginBottom: 10,
-    borderRadius: 35,
-    borderWidth: 3,
-    borderColor: "#e6c98c",
+    borderRadius: 10,
+    elevation: 5,
+    borderWidth: 1,
+    borderColor: "#fff",
   },
   bttnLoginFacebook: {
     backgroundColor: "blue",
@@ -146,10 +147,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
-    width: "80%",
+    width: "70%",
     height: 50,
     borderBottomRadius: 10,
-    borderBottomWidth: 3,
+    borderBottomWidth: 2,
     borderBottomColor: "#e6c98c",
   },
 });
