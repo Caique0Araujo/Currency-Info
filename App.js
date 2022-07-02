@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Context from "./context/context";
 import Decider from "./helpers/Decider";
-import retrive from "./components/Retrieve";
+import retrive from "./helpers/Retrieve";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Theme from "./utilities/Theme";

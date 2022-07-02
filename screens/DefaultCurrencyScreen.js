@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Modal, Pressable } from "reac
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import CurrencyCard from "../components/CurrencyCard";
-import store from "../components/Store";
+import store from "../helpers/Store";
 
 const cardDollar = {
   name: "Dollar",

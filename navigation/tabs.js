@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import AboutScreen from "../screens/AboutScreen";
 import CurrencyScreen from "../screens/CurrencyScreen";
 import HomeScreen from "../screens/HomeScreen";
-import Logout from "../components/logout";
+import Logout from "../helpers/Logout";
 import Context from "../context/context";
 import { useContext } from "react";
 import { LogBox } from "react-native";

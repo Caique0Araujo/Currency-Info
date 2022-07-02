@@ -9,7 +9,7 @@ import Context from "../context/context";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import React, { useEffect, useContext } from "react";
-import Store from '../components/Store';
+import Store from '../helpers/Store';
 
 
 WebBrowser.maybeCompleteAuthSession();
