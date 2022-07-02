@@ -10,7 +10,7 @@ import Logout from "../components/logout";
 import Context from "../context/context";
 import { useContext } from "react";
 import { LogBox } from "react-native";
-import Stacks from "./stack";
+import Stack from "./Stack";
 
 const Tab = createBottomTabNavigator();
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
@@ -120,7 +120,7 @@ const Tabs = ({ navigation }) => {
 
       <Tab.Screen
         name="Settings"
-        component={Stacks}
+        component={Stack}
         options={{
           tabBarIcon: ({ focused }) => {
             return (

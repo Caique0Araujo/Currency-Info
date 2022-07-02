@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import Login from '../screens/LoginScreen';
-import Tabs from '../navigation/tabs';
+import Tabs from '../navigation/Tabs';
 import Context from '../context/context';
 
 

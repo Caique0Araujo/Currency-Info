@@ -9,7 +9,7 @@ import CurrencyCard from "../components/CurrencyCard";
 import { SafeAreaView, StatusBar, Image } from "react-native";
 import Context from "../context/context";
 import { useContext, useEffect, useState } from "react";
-import retrive from "../components/retrieve";
+import retrive from "../helpers/Retrieve";
 import getExchangeValues from "../repositories/getExchangeValues";
 
 export default function HomeScreen() {

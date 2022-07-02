@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useState, useEffect } from "react";
-import retrive from "../components/retrieve";
+import retrive from "../helpers/Retrieve";
 import getExchangeValues from "../repositories/getExchangeValues";
 
 

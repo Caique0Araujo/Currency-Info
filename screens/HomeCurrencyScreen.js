@@ -1,8 +1,8 @@
 import { Picker } from "@react-native-picker/picker";
 import { StyleSheet, Text, TouchableOpacity, View, Modal, Pressable } from "react-native";
 import { useState, useEffect } from "react";
-import store from "../components/store";
-import retrive from '../components/retrieve';
+import store from "../helpers/Store";
+import retrive from '../helpers/Retrieve';
 
 async function storeData(key, name) {
   await store(key, name);
